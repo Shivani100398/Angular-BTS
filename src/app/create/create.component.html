@@ -1,0 +1,142 @@
+<div>
+  <h2>Bug Details</h2>
+</div>
+<br>
+<form id="bugCreateForm">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label class="control-label col-sm-3  col-md-offset-4" for="Name">Name<span>*</span></label>
+          <div class="col-sm-9">
+            <input [(ngModel)]="bug.name" [ngModelOptions]="{standalone: true}">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-3  col-md-offset-4" for="pwd">Priority</label>
+          <div class="col-sm-9">
+            <select  [(ngModel)]='bug.priority' [ngModelOptions]="{standalone: true}" name="priority" class="form-control" id="priority">
+              <option value="LOW">LOW</option>
+              <option value="MEDIUM">MEDIUM</option>
+              <option value="HIGH">HIGH</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-3  col-md-offset-4 " for="pwd">Type</label>
+          <div class="col-sm-9">
+            <select [(ngModel)]='bug.type' [ngModelOptions]="{standalone: true}" name="type" class="form-control" id="type">
+              <option value="UNITLEVEL">UNIT-LEVEL</option>
+              <option value="SYSTEMLEVEL">SYSTEM-LEVEL</option>
+              <option value="OUTOFBOUND">OUT OF BOUND</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-3  col-md-offset-4 " for="pwd">ETA
+            Date<span>*</span>
+          </label>
+          <div class="col-sm-9">
+            <input [(ngModel)]="bug.etaDate" [ngModelOptions]="{standalone: true}" type="date" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-offset-4" for="pwd">Module<span>*</span></label>
+          <div class="col-sm-9">
+            <input [(ngModel)]='bug.module' type="text" class="form-control"
+              placeholder="Module" name="module" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-offset-4" for="pwd">Version</label>
+          <div class="col-sm-9">
+            <input  [(ngModel)]='bug.buildVersion' [ngModelOptions]="{standalone: true}" type="text" class="form-control"
+              placeholder="Build Version" name="buildVersion">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-offset-4" for="pwd">Description<span>*</span></label>
+          <div class="col-sm-9">
+            <textarea  [(ngModel)]='bug.description' [ngModelOptions]="{standalone: true}" class="form-control" name="descrption"
+              rows="2" required></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Severity</label>
+          <div class="col-sm-9">
+            <select [(ngModel)]='bug.severity' [ngModelOptions]="{standalone: true}" name="severity" class="form-control" id="severity">
+              <option value="LOW">LOW</option>
+              <option value="MEDIUM">MEDIUM</option>
+              <option value="HIGH">HIGH</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Status</label>
+          <div class="col-sm-9">
+            <select [(ngModel)]='bug.status' [ngModelOptions]="{standalone: true}" name="status" class="form-control" id='status'>
+              <option value="NEW">New</option>
+              <option value="ASSIGNED">Assigned</option>
+              <option value="OPEN">Open</option>
+              <option value="FIXED">Fixed</option>
+              <option value="PENDING_RETEST">Pending Retest</option>
+              <option value="RETEST">Retest</option>
+              <option value="REOPEN">Reopen</option>
+              <option value="VERIFIED">Verified</option>
+              <option value="CLOSED">Closed</option>
+              <option value="REJECTED">Rejected</option>
+              <option value="DUPLICATE">Duplicate</option>
+              <option value="DEFERRED">Deferred</option>
+              <option value="NOT_A_BUG">Not A Bug</option>
+              <option value="NEED_MORE_INFO">Need More Info</option>
+              <option value="COULDNOT_REPRODUCE">Could Not Reproduce</option>
+              <option value="WONT_FIX">Wont Fix</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Project
+            Id<span>*</span>
+          </label>
+          <div class="col-sm-9">
+            <input  [(ngModel)]='bug.projectId' [ngModelOptions]="{standalone: true}" type="text" class="form-control"
+              placeholder="Project Id" name="projectId" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Tester
+            Id<span>*</span>
+          </label>
+          <div class="col-sm-9">
+            <input  [(ngModel)]='bug.testerId' [ngModelOptions]="{standalone: true}" type="text" class="form-control"
+              placeholder="Tester Id" name="testerId" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Developer ID<span>*</span></label>
+          <div class="col-sm-9">
+            <input  [(ngModel)]='bug.developerID' [ngModelOptions]="{standalone: true}" type="text" class="form-control"
+              placeholder="Developer ID" name="DeveloperID" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Synopsis<span>*</span></label>
+          <div class="col-sm-9">
+            <textarea  [(ngModel)]='bug.synopsis' [ngModelOptions]="{standalone: true}" class="form-control" name="synopsis"
+              rows="2" required></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Product<span>*</span></label>
+          <div class="col-sm-9">
+            <input  [(ngModel)]='bug.product' [ngModelOptions]="{standalone: true}" type="text" class="form-control"
+              placeholder="Product" name="product" required>
+          </div>
+        </div>
+</div>
+    </div>
+  </div>
+</form>
+<button (click)='save()' class="btn btn-primary btn-block">Save</button>
