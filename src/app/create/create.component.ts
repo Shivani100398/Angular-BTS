@@ -9,23 +9,24 @@ import { BugService } from '../bug.service';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {  //controller
-  title:string = 'Userform';
+ // title:string = 'Userform';
   bug:Bug=new Bug(); //model -stores all form data
-  bugArray:Bug[]=[];
+  //bugArray:Bug[]=[];
   constructor(private bugService:BugService) { }
   save(){
     const promise = this.bugService.save(this.bug);
     promise.subscribe(response=> {
       console.log(response);
       alert('user added..')
-      this.bugArray.push(Object.assign({}, this.bug));
+     // this.bugArray.push(Object.assign({}, this.bug));
     },
     error=> {
       console.log(error);
-      alert(error.statusText)
+      alert('error Happened')
     })
 
   }
   ngOnInit(): void {
+
   }
 }
