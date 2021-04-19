@@ -21,4 +21,7 @@ export class BugService {
   getBugName(bugname:string  ){
     return this.http.get('http://localhost:8085/bug/name'+'/'+bugname);
   }
+  getBugStatus(bugstatus:string  ){
+    return this.http.get('http://localhost:8085/bug/status'+'/'+bugstatus);
+  }
 }
