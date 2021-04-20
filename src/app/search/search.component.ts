@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+  import { Component, OnInit } from '@angular/core';
 import { Bug } from '../Bug';
 import { BugService } from '../bug.service';
 
@@ -10,7 +10,7 @@ import { BugService } from '../bug.service';
 export class SearchComponent implements OnInit {
   bug:Bug = new Bug();
   bugResult:any;
-  bugArray:any;
+  bugArray:Bug[]=[];
   name: string = '';
   status:string = 'NEW';
   constructor(private bugService: BugService) { }
@@ -26,7 +26,7 @@ export class SearchComponent implements OnInit {
           });
         }
         else{
-          alert("Invalid Bug Name");
+          alert("No Bug found with this name..!!");
         }
       },
         error => {
