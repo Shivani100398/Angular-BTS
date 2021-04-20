@@ -7,17 +7,27 @@ import { CreateComponent } from './create/create.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GetBugComponent } from './get-bug/get-bug.component';
 import { SearchComponent } from './search/search.component';
+import { RouterModule, Routes } from '@angular/router';
+import { HeaderComponent } from './header/header.component';
 
+const appRoutes: Routes = [
+  { path: '', component: CreateComponent }, //default, Home page
+  { path: 'search', component: SearchComponent },
+  { path: 'get-bug', component: GetBugComponent },
+];
 @NgModule({
   declarations: [
     AppComponent,
     CreateComponent,
     GetBugComponent,
-
-    SearchComponent
+   SearchComponent,
+   HeaderComponent
 
   ],
-  imports: [
+  imports: [RouterModule.forRoot(
+    appRoutes,
+    { enableTracing: true } // <-- debugging purposes only
+  ),
     BrowserModule, FormsModule, HttpClientModule
   ],
   providers: [],
