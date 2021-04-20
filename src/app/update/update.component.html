@@ -1,12 +1,11 @@
 <br>
 <div class="form-group row searchForm">
-  <br>
-  <form id="bugSearchForm" class="col-sm-9 row">
-    <label for="bugName" class="bugLabel">Bug Name<span>*</span></label>
-    <input  [(ngModel)]='name'  type="text" class="form-control col-sm-6"
+    <label class="bugLabel">Bug Name<span>*</span></label>
+    <input  [(ngModel)]='name'  type="text" id='bugName' class="form-control col-sm-5"
     placeholder="Name" name="Name" required>
-  </form>
-  <button type="button" id="searchBug" class="btn btn-primary btn-block" (click)="getBugName()">Get Bug</button>
+    <div class="col-sm-2">
+<button type="button" id="searchBug" class="btn btn-primary " (click)="getBugName()">Get Bug</button>
+</div>
 </div>
 <div>
 <div>

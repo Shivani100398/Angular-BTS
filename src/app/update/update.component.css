@@ -18,6 +18,13 @@ h2 {
 	margin-top: 0.4em;
 	margin-bottom: 0.4em;
 }
+.bugName{
+ text-align:center;
+
+}
+.form-group row searchForm{
+  text-align: center;
+}
 
 span {
 	color: red;
