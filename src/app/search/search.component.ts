@@ -22,7 +22,7 @@ export class SearchComponent implements OnInit {
         this.bugResult = response;
         if(this.bugResult.length){
           this.bugResult.forEach(bug => {
-            this.bugArray.push(bug);
+            this.bugArray=this.bugResult;
           });
         }
         else{

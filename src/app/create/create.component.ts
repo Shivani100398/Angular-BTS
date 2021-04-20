@@ -9,16 +9,68 @@ import { BugService } from '../bug.service';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {  //controller
- // title:string = 'Userform';
   bug:Bug=new Bug(); //model -stores all form data
-  //bugArray:Bug[]=[];
+  remainingText=50;
+  remainingText1=100;
   constructor(private bugService:BugService) { }
+  valueChange(value:number)
+  {
+    this.remainingText=100-value;
+  }
+  valueChange2(value1:number)
+  {
+    this.remainingText1=50-value1;
+  }
+
   save(){
+    if (!this.bug.name.trim()) {
+      alert("Please provide bug name");
+    }
+    else if (this.bug.name.length > 7) {
+      alert("Bug name cannot be more than 7 character");
+    }
+    else if (!this.bug.projectId.trim()) {
+      alert("Please provide project id");
+    }
+    else if (this.bug.projectId.length > 10) {
+      alert("project id cannot be more than 10 character");
+    }
+    else if (!this.bug.testerId.trim()) {
+      alert("Please provide tester id");
+    }
+    else if (this.bug.testerId.length > 10) {
+      alert("tester id cannot be more than 10 character");
+    }
+    else if (!this.bug.product.trim()) {
+      alert("Please provide product name");
+    }
+    else if (this.bug.product.length > 25) {
+      alert("product name cannot be more than 25 character");
+    }
+    else if (!this.bug.module.trim()) {
+      alert("Please provide module name");
+    }
+    else if (this.bug.module.length > 10) {
+      alert("module name cannot be more than 10 character");
+    }
+    else if (!this.bug.buildVersion.trim()) {
+      alert("Please provide build version");
+    }
+    else if (this.bug.buildVersion.length > 6) {
+      alert("build version cannot be more than 6 character");
+    }
+    else if (!this.bug.synopsis.trim()) {
+      alert("Please provide synopsis");
+    }
+   else if (!this.bug.description.trim()) {
+      alert("Please provide description");
+    }
+
     const promise = this.bugService.save(this.bug);
     promise.subscribe(response=> {
       console.log(response);
       alert('user added..')
-     // this.bugArray.push(Object.assign({}, this.bug));
+
     },
     error=> {
       console.log(error);

@@ -15,6 +15,8 @@ export class BugService {
       responseType:"text"
     });
   }
+
+
   // View All Bugs
   getAllBugs(){
     return this.http.get('http://localhost:8085/bug')
@@ -28,4 +30,14 @@ export class BugService {
   getBugStatus(bugstatus:string  ){
     return this.http.get('http://localhost:8085/bug/status'+'/'+bugstatus);
   }
+
+  //Update Bug
+  update(bug: Bug, id: string) {
+    return this.http.put('http://localhost:8085/bug'+'/'+id, bug, {
+      headers: { "content-type": 'application/json' }
+
+    });
+  }
+
 }
+
