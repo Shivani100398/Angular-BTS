@@ -9,13 +9,14 @@
         <div class="form-group">
           <label class="control-label col-sm-3  col-md-offset-4" for="Name">Name<span>*</span></label>
           <div class="col-sm-9">
-            <input [(ngModel)]='bug.name' type='text' placeholder='Name'>
+            <input  [(ngModel)]='bug.name'  type="text" class="form-control"
+            placeholder="Name" name="Name" required>
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-3  col-md-offset-4" for="pwd">Priority</label>
           <div class="col-sm-9">
-            <select  [(ngModel)]='bug.priority' placeholder='Priority'>
+            <select  [(ngModel)]='bug.priority' placeholder='Priority' type="text" class="form-control">
               <option value="LOW">LOW</option>
               <option value="MEDIUM">MEDIUM</option>
               <option value="HIGH">HIGH</option>
@@ -25,7 +26,7 @@
         <div class="form-group">
           <label class="control-label col-sm-3  col-md-offset-4 " for="pwd">Type</label>
           <div class="col-sm-9">
-            <select [(ngModel)]='bug.type'  >
+            <select [(ngModel)]='bug.type' type="text" class="form-control" >
               <option value="UNITLEVEL">UNIT-LEVEL</option>
               <option value="SYSTEMLEVEL">SYSTEM-LEVEL</option>
               <option value="OUTOFBOUND">OUT OF BOUND</option>
@@ -37,14 +38,14 @@
             Date<span>*</span>
           </label>
           <div class="col-sm-9">
-            <input type='date' [(ngModel)]='bug.etaDate'  >
+            <input type='date' [(ngModel)]='bug.etaDate'  class="form-control" >
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-3 col-md-offset-4" >Module<span>*</span></label>
           <div class="col-sm-9">
             <input [(ngModel)]='bug.module' type='text'
-              placeholder="Module" name="module" required>
+              placeholder="Module" name="module" required type="text" class="form-control">
           </div>
         </div>
         <div class="form-group">
@@ -58,8 +59,8 @@
           <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Description<span>*</span></label>
           <div class="col-sm-9">
             <div class="textarea-wrapper">
-            <textarea pInputTextArea [(ngModel)]="bug.description"  class="form-control" (ngModelChange)="valueChange(bug.description.length)" maxlength="100" placeholder="Description should be between 10 and 100 characters" required></textarea>
-            <span id='validation' class="remaning">{{remainingText+' characters left'}}</span>
+            <textarea pInputTextArea [(ngModel)]="bug.description"  class="form-control" (ngModelChange)="valueChange(bug.description.length)" maxlength="100" rows="3" placeholder="Description should be between 10 and 100 characters" required></textarea>
+            <span id='validation' class="remaning">{{remainingText2 + ' characters left'}}</span>
           </div>
           </div>
         </div>
@@ -72,8 +73,8 @@
               <option value="LOW">LOW</option>
               <option value="MEDIUM">MEDIUM</option>
               <option value="HIGH">HIGH</option>
-              </select>
-              </div>
+            </select>
+          </div>
         </div>
 
         <div class="form-group">
@@ -95,18 +96,11 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Developer ID<span>*</span></label>
-          <div class="col-sm-9">
-            <input  [(ngModel)]='bug.developerID'  type="text" class="form-control"
-              placeholder="Developer ID" name="DeveloperID">
-          </div>
-        </div>
-        <div class="form-group">
           <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Synopsis<span>*</span></label>
           <div class="col-sm-9">
             <div class="textarea-wrapper">
-            <textarea pInputTextArea [(ngModel)]="bug.synopsis"  class="form-control" (ngModelChange)="valueChange2(bug.synopsis.length)" maxlength="50" placeholder="Synopsis should be between 10 and 50 characters" required></textarea>
-            <span id='validation' class="remaning">{{remainingText1+' characters left'}}</span>
+            <textarea pInputTextArea [(ngModel)]="bug.synopsis"  class="form-control" (ngModelChange)="valueChange2(bug.synopsis.length)" maxlength="50" rows="3" placeholder="Synopsis should be between 10 and 50 characters" required></textarea>
+            <span id='validation' class="remaning">{{remainingText1 + " characters left"}}</span>
           </div>
           </div>
         </div>

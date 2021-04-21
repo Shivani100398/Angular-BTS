@@ -12,46 +12,80 @@ export class SearchComponent implements OnInit {
   bugResult:any;
   bugArray:Bug[]=[];
   name: string = '';
-  status:string = 'NEW';
+  status:string = '';
   constructor(private bugService: BugService) { }
-  getBugName() {
+  getBugNameAndStatus() {
     const bugName = this.name.trim();
-    if (bugName) {
+    const bugStatus = this.status.trim();
+    if (bugName&&bugStatus) {
+      const promise = this.bugService.getBugNameAndStatus(bugName,bugStatus);
+      promise.subscribe(response => {
+        this.bugResult = response;
+        if(this.bugResult.length){
+            this.bugArray=this.bugResult;
+          }
+        else
+        {
+          alert("No matching bug name with "+bugStatus+" status");
+        }
+      },
+
+        error => {
+          console.log(error);
+          alert('error happened..')
+        })
+    }
+  else if(bugName){
+      console.log("BugNAme");
       const promise = this.bugService.getBugName(bugName);
       promise.subscribe(response => {
         this.bugResult = response;
         if(this.bugResult.length){
-          this.bugResult.forEach(bug => {
             this.bugArray=this.bugResult;
-          });
-        }
-        else{
-          alert("No Bug found with this name..!!");
+          }
+        else
+        {
+          alert("No bug found with name "+bugName);
         }
       },
+
         error => {
           console.log(error);
           alert('error happened..')
         })
     }
-    else {
-      const status = this.status;
-      const promise = this.bugService.getBugStatus(status);
-      promise.subscribe(response => {
-        this.bugResult = response;
-        if (this.bugResult.length) {
-          this.bugArray = this.bugResult;
-        }
-        else {
-          alert("No Bug with Status : " + status + " found");
-        }
-      },
-        error => {
-          console.log(error);
-          alert('error happened..')
-        })
-    }
-  }
+
+  else if(bugStatus){
+     console.log("Bug status")
+     const promise = this.bugService.getBugStatus(bugStatus);
+     promise.subscribe(response => {
+       this.bugResult = response;
+       if(this.bugResult.length){
+           this.bugArray=this.bugResult;
+         }
+       else
+       {
+         alert("No Bug  found with status "+bugStatus);
+       }
+     },
+
+       error => {
+         console.log(error);
+         alert('error happened..')
+       })
+   }
+
+  else{
+ console.log("All Bugs")
+ const observable = this.bugService.getAllBugs();
+ observable.subscribe(response => {
+   this.bugResult = response;
+   if (this.bugResult.length) {
+     this.bugArray = this.bugResult;
+   }
+ }, error => console.log(error));
+}
+}
   ngOnInit(): void {
   }
 }

@@ -30,6 +30,10 @@ export class BugService {
   getBugStatus(bugstatus:string  ){
     return this.http.get('http://localhost:8085/bug/status'+'/'+bugstatus);
   }
+    //Get By NAme and Status Both
+    getBugNameAndStatus(name:string,status:string){
+      return this.http.get('http://localhost:8085/bug/search/'+name+'?status='+status);
+    }
 
   //Update Bug
   update(bug: Bug, id: string) {

@@ -1,6 +1,6 @@
 <br>
 <div class="form-group row searchForm">
-    <label class="bugLabel">Bug Name<span>*</span></label>
+    <label class="col-sm-4 bugLable">Bug Name<span>*</span></label>
     <input  [(ngModel)]='name'  type="text" id='bugName' class="form-control col-sm-5"
     placeholder="Name" name="Name" required>
     <div class="col-sm-2">
@@ -64,7 +64,10 @@
         <div class="form-group">
           <label class="control-label col-sm-3 col-md-offset-4" for="pwd">Description<span>*</span></label>
           <div class="col-sm-9">
-            <textarea [(ngModel)]='bug.synopsis' id='synopsis' class="form-control" name="synopsis" rows="2" placeholder="Synopsis should be between 10 and 50 characters" required></textarea>
+            <div class="textarea-wrapper">
+              <textarea pInputTextArea [(ngModel)]="bug.description"  class="form-control" (ngModelChange)="valueChange(bug.description.length)" maxlength="100" placeholder="Description should be between 10 and 100 characters" required></textarea>
+              <span id='validation' class="remaning">{{remainingText2+' characters left'}}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -132,7 +135,10 @@
         <div class="form-group">
           <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Synopsis<span>*</span></label>
           <div class="col-sm-9">
-            <textarea [(ngModel)]='bug.synopsis' id='synopsis' class="form-control" name="synopsis" rows="2" placeholder="Synopsis should be between 10 and 50 characters" required></textarea>
+            <div class="textarea-wrapper">
+              <textarea pInputTextArea [(ngModel)]="bug.synopsis"  class="form-control" (ngModelChange)="valueChange2(bug.synopsis.length)" maxlength="50" placeholder="Synopsis should be between 10 and 50 characters" required></textarea>
+              <span id='validation' class="remaning">{{remainingText1+' characters left'}}</span>
+            </div>
       </div>
         </div>
         <div class="form-group">

@@ -10,12 +10,14 @@ import { BugService } from '../bug.service';
 })
 export class CreateComponent implements OnInit {  //controller
   bug:Bug=new Bug(); //model -stores all form data
-  remainingText=50;
-  remainingText1=100;
+  remainingText1=50;
+  remainingText2=100;
   constructor(private bugService:BugService) { }
   valueChange(value:number)
   {
-    this.remainingText=100-value;
+
+    this.remainingText2=100-value;
+
   }
   valueChange2(value1:number)
   {
@@ -44,8 +46,8 @@ export class CreateComponent implements OnInit {  //controller
     else if (!this.bug.product.trim()) {
       alert("Please provide product name");
     }
-    else if (this.bug.product.length > 25) {
-      alert("product name cannot be more than 25 character");
+    else if (this.bug.product.length >30) {
+      alert("product name cannot be more than 30 character");
     }
     else if (!this.bug.module.trim()) {
       alert("Please provide module name");
@@ -56,8 +58,8 @@ export class CreateComponent implements OnInit {  //controller
     else if (!this.bug.buildVersion.trim()) {
       alert("Please provide build version");
     }
-    else if (this.bug.buildVersion.length > 6) {
-      alert("build version cannot be more than 6 character");
+    else if (this.bug.buildVersion.length > 10) {
+      alert("build version cannot be more than 10 character");
     }
     else if (!this.bug.synopsis.trim()) {
       alert("Please provide synopsis");

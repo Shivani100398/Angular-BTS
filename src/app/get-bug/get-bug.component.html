@@ -1,7 +1,7 @@
 
+<h2>View Bugs</h2>
 <table class="table table-striped">
     <tr>
-    <th>Id</th>
     <th>Name</th>
     <th>Priority</th>
     <th>Type</th>
@@ -12,7 +12,6 @@
 
   <tbody id="resultTable">
     <tr *ngFor='let user1 of bugArray; '>
-      <td>{{user1.id}}</td>
       <td>{{user1.name}}</td>
       <td>{{user1.priority}}</td>
       <td>{{user1.type}}</td>

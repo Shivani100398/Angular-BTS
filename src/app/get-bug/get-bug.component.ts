@@ -13,8 +13,6 @@ export class GetBugComponent implements OnInit {
   constructor(private bugService:BugService) { }
 
   ngOnInit(): void {
-
-
       const observable=this.bugService.getAllBugs();
       observable.subscribe(response=>{
         console.log(response);
