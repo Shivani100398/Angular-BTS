@@ -15,9 +15,16 @@ export class SearchComponent implements OnInit {
   status:string = '';
   constructor(private bugService: BugService) { }
   deleteBug(id:String, index:number){
+    if(confirm("Are you sure you want to delete"))
+    {
     const observable = this.bugService.deleteBug(id);
     observable.subscribe(response=> this.bugArray.splice(index,1))
   }
+  else
+  {
+     alert("Deletion Cancelled");
+  }
+}
   getBugNameAndStatus() {
     const bugName = this.name.trim();
     const bugStatus = this.status.trim();
