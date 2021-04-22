@@ -75,8 +75,18 @@ export class CreateComponent implements OnInit {  //controller
 
     },
     error=> {
-      console.log(error);
+      console.log(error.ok);{
+        let message:string=error.headers.get("error");
+        if(message.length<100){
+          alert("Error..!! :"+error.headers.get("error"));
+        }
+        else if(message.indexOf('ETA')>-1){
+          alert("ETA Date cannot be a past date");
+        }
+      else{
       alert('error Happened')
+      }
+    }
     })
 
   }
