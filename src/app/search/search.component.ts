@@ -14,6 +14,10 @@ export class SearchComponent implements OnInit {
   name: string = '';
   status:string = '';
   constructor(private bugService: BugService) { }
+  deleteBug(id:String, index:number){
+    const observable = this.bugService.deleteBug(id);
+    observable.subscribe(response=> this.bugArray.splice(index,1))
+  }
   getBugNameAndStatus() {
     const bugName = this.name.trim();
     const bugStatus = this.status.trim();

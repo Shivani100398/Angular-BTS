@@ -42,6 +42,10 @@ export class BugService {
 
     });
   }
+  //Delete Bug
+  deleteBug(bugId:String){
+    return this.http.delete('http://localhost:8085/bug'+'/'+bugId)
+  }
 
 }
 

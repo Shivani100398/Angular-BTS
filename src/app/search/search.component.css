@@ -22,3 +22,6 @@ table, th, td {
   border-collapse: collapse;
   margin-top: 50px;
 }
+td :nth-child(even){
+  background-color: red;
+}
