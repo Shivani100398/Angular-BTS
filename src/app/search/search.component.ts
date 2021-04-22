@@ -21,9 +21,9 @@ export class SearchComponent implements OnInit {
     observable.subscribe(response=> this.bugArray.splice(index,1))
   }
   else
-  {
-     alert("Deletion Cancelled");
-  }
+ {
+   alert("Deletion Cancelled");
+ }
 }
   getBugNameAndStatus() {
     const bugName = this.name.trim();
