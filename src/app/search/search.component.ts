@@ -19,6 +19,7 @@ export class SearchComponent implements OnInit {
     {
     const observable = this.bugService.deleteBug(id);
     observable.subscribe(response=> this.bugArray.splice(index,1))
+    alert("Bug Deleted")
   }
   else
  {
@@ -96,6 +97,9 @@ export class SearchComponent implements OnInit {
    }
  }, error => console.log(error));
 }
+}
+clear(){
+
 }
   ngOnInit(): void {
   }

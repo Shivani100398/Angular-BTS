@@ -23,7 +23,7 @@
           <label class="control-label col-sm-3  col-md-offset-4" for="pwd">Priority</label>
           <div class="col-sm-9">
             <select  [(ngModel)]='bug.priority' placeholder='Priority' type="text" class="form-control">
-              <option value="LOW">LOW</option>
+              <option value selected="LOW">LOW</option>
               <option value="MEDIUM">MEDIUM</option>
               <option value="HIGH">HIGH</option>
             </select>
@@ -33,7 +33,7 @@
           <label class="control-label col-sm-3  col-md-offset-4 " for="pwd">Type</label>
           <div class="col-sm-9">
             <select [(ngModel)]='bug.type' type="text" class="form-control" >
-              <option value="UNITLEVEL">UNIT-LEVEL</option>
+              <option value selected="UNITLEVEL">UNIT-LEVEL</option>
               <option value="SYSTEMLEVEL">SYSTEM-LEVEL</option>
               <option value="OUTOFBOUND">OUT OF BOUND</option>
             </select>
@@ -65,7 +65,7 @@
           <label class="control-label col-sm-3 col-md-offset-4" for="pwd">Description<span>*</span></label>
           <div class="col-sm-9">
             <div class="textarea-wrapper">
-              <textarea pInputTextArea [(ngModel)]="bug.description"  class="form-control" (ngModelChange)="valueChange(bug.description.length)" maxlength="100" placeholder="Description should be between 10 and 100 characters" required></textarea>
+              <textarea pInputTextArea [(ngModel)]="bug.description"  class="form-control" (ngModelChange)="valueChange(bug.description.length)" maxlength="120" placeholder="Description should be between 10 and 120 characters" required></textarea>
               <span id='validation' class="remaning">{{remainingText2+' characters left'}}</span>
             </div>
           </div>
@@ -76,7 +76,7 @@
           <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Severity</label>
           <div class="col-sm-9">
             <select [(ngModel)]='bug.severity'  class="form-control">
-              <option value="LOW">LOW</option>
+              <option value selected="LOW">LOW</option>
               <option value="MEDIUM">MEDIUM</option>
               <option value="HIGH">HIGH</option>
             </select>
@@ -106,7 +106,7 @@
           <div class="col-sm-9">
             <select [(ngModel)]='bug.status'  class="form-control">
 
-              <option value="NEW">New</option>
+              <option value selected="NEW">New</option>
               <option value="ASSIGNED">Assigned</option>
               <option value="OPEN">Open</option>
               <option value="FIXED">Fixed</option>
@@ -136,7 +136,7 @@
           <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Synopsis<span>*</span></label>
           <div class="col-sm-9">
             <div class="textarea-wrapper">
-              <textarea pInputTextArea [(ngModel)]="bug.synopsis"  class="form-control" (ngModelChange)="valueChange2(bug.synopsis.length)" maxlength="50" placeholder="Synopsis should be between 10 and 50 characters" required></textarea>
+              <textarea pInputTextArea [(ngModel)]="bug.synopsis"  class="form-control" (ngModelChange)="valueChange2(bug.synopsis.length)" maxlength="70" placeholder="Synopsis should be between 10 and 70 characters" required></textarea>
               <span id='validation' class="remaning">{{remainingText1+' characters left'}}</span>
             </div>
       </div>

@@ -10,56 +10,56 @@ import { BugService } from '../bug.service';
 })
 export class CreateComponent implements OnInit {  //controller
   bug:Bug=new Bug(); //model -stores all form data
-  remainingText1=50;
-  remainingText2=100;
+  remainingText1=120;
+  remainingText2=70;
   constructor(private bugService:BugService) { }
   valueChange(value:number)
   {
 
-    this.remainingText2=100-value;
+    this.remainingText2=70-value;
 
   }
   valueChange2(value1:number)
   {
-    this.remainingText1=50-value1;
+    this.remainingText1=120-value1;
   }
 
   save(){
     if (!this.bug.name.trim()) {
       alert("Please provide bug name");
     }
-    else if (this.bug.name.length > 7) {
-      alert("Bug name cannot be more than 7 character");
+    else if (this.bug.name.length > 50) {
+      alert("Bug name cannot be more than 50 character");
     }
     else if (!this.bug.projectId.trim()) {
       alert("Please provide project id");
     }
-    else if (this.bug.projectId.length > 10) {
-      alert("project id cannot be more than 10 character");
+    else if (this.bug.projectId.length > 50) {
+      alert("project id cannot be more than 50 character");
     }
     else if (!this.bug.testerId.trim()) {
       alert("Please provide tester id");
     }
-    else if (this.bug.testerId.length > 10) {
-      alert("tester id cannot be more than 10 character");
+    else if (this.bug.testerId.length > 50) {
+      alert("tester id cannot be more than 50 character");
     }
     else if (!this.bug.product.trim()) {
       alert("Please provide product name");
     }
-    else if (this.bug.product.length >30) {
-      alert("product name cannot be more than 30 character");
+    else if (this.bug.product.length >50) {
+      alert("product name cannot be more than 50 character");
     }
     else if (!this.bug.module.trim()) {
       alert("Please provide module name");
     }
-    else if (this.bug.module.length > 10) {
-      alert("module name cannot be more than 10 character");
+    else if (this.bug.module.length > 50) {
+      alert("module name cannot be more than 50 character");
     }
     else if (!this.bug.buildVersion.trim()) {
       alert("Please provide build version");
     }
-    else if (this.bug.buildVersion.length > 10) {
-      alert("build version cannot be more than 10 character");
+    else if (this.bug.buildVersion.length > 50) {
+      alert("build version cannot be more than 50 character");
     }
     else if (!this.bug.synopsis.trim()) {
       alert("Please provide synopsis");
@@ -71,7 +71,9 @@ export class CreateComponent implements OnInit {  //controller
     const promise = this.bugService.save(this.bug);
     promise.subscribe(response=> {
       console.log(response);
-      alert('user added..')
+      alert("Make sure everything entered is correct");
+
+      alert('Bug added..')
 
     },
     error=> {
