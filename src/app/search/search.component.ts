@@ -99,6 +99,8 @@ export class SearchComponent implements OnInit {
 }
 }
 clear(){
+  console.log("clear");
+ window.location.reload();
 
 }
   ngOnInit(): void {
