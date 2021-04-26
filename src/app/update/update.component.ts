@@ -73,6 +73,7 @@ else if (!this.bug.description.trim()) {
     console.log(response);
     alert('Bug Updated')
 
+
   },
   error=> {
     console.log(error.ok);{

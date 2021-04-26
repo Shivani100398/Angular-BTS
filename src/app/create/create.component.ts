@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Bug } from '../Bug';
 import { BugService } from '../bug.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create',
@@ -26,54 +27,64 @@ export class CreateComponent implements OnInit {  //controller
 
   save(){
     if (!this.bug.name.trim()) {
-      alert("Please provide bug name");
+      Swal.fire("Please provide bug name");
     }
     else if (this.bug.name.length > 50) {
-      alert("Bug name cannot be more than 50 character");
+      Swal.fire("Bug name cannot be more than 50 character");
     }
     else if (!this.bug.projectId.trim()) {
-      alert("Please provide project id");
+      Swal.fire("Please provide project id");
     }
     else if (this.bug.projectId.length > 50) {
-      alert("project id cannot be more than 50 character");
+      Swal.fire("project id cannot be more than 50 character");
     }
     else if (!this.bug.testerId.trim()) {
-      alert("Please provide tester id");
+      Swal.fire("Please provide tester id");
     }
     else if (this.bug.testerId.length > 50) {
-      alert("tester id cannot be more than 50 character");
+      Swal.fire("tester id cannot be more than 50 character");
     }
     else if (!this.bug.product.trim()) {
-      alert("Please provide product name");
+      Swal.fire("Please provide product name");
     }
     else if (this.bug.product.length >50) {
-      alert("product name cannot be more than 50 character");
+      Swal.fire("product name cannot be more than 50 character");
     }
     else if (!this.bug.module.trim()) {
-      alert("Please provide module name");
+      Swal.fire("Please provide module name");
     }
     else if (this.bug.module.length > 50) {
-      alert("module name cannot be more than 50 character");
+      Swal.fire("module name cannot be more than 50 character");
     }
     else if (!this.bug.buildVersion.trim()) {
-      alert("Please provide build version");
+      Swal.fire("Please provide build version");
     }
     else if (this.bug.buildVersion.length > 50) {
-      alert("build version cannot be more than 50 character");
+      Swal.fire("build version cannot be more than 50 character");
     }
     else if (!this.bug.synopsis.trim()) {
-      alert("Please provide synopsis");
+      Swal.fire("Please provide synopsis");
     }
    else if (!this.bug.description.trim()) {
-      alert("Please provide description");
+      Swal.fire("Please provide description");
     }
 
     const promise = this.bugService.save(this.bug);
     promise.subscribe(response=> {
       console.log(response);
-      alert("Make sure everything entered is correct");
-
-      alert('Bug added..')
+      Swal.fire({
+        title: 'Make sure everything entered is correct..!!',
+        showDenyButton: true,
+        confirmButtonText: `Save Anyway..`,
+        denyButtonText: `Let me Check..`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          Swal.fire('Bug Saved!', '', 'success')
+        } else if (result.isDenied) {
+          Swal.fire('Changes are not saved', '', 'info')
+        }
+      })
 
     },
     error=> {

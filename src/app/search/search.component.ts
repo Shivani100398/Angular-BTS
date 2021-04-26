@@ -1,6 +1,7 @@
   import { Component, OnInit } from '@angular/core';
 import { Bug } from '../Bug';
 import { BugService } from '../bug.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-search',
@@ -14,18 +15,6 @@ export class SearchComponent implements OnInit {
   name: string = '';
   status:string = '';
   constructor(private bugService: BugService) { }
-  deleteBug(id:String, index:number){
-    if(confirm("Are you sure you want to delete"))
-    {
-    const observable = this.bugService.deleteBug(id);
-    observable.subscribe(response=> this.bugArray.splice(index,1))
-    alert("Bug Deleted")
-  }
-  else
- {
-   alert("Deletion Cancelled");
- }
-}
   getBugNameAndStatus() {
     const bugName = this.name.trim();
     const bugStatus = this.status.trim();
@@ -97,12 +86,27 @@ export class SearchComponent implements OnInit {
    }
  }, error => console.log(error));
 }
+}deleteBug(id: any, index: number) {
+  //method for deletion of bug
+  Swal.fire({
+    title: 'Are you sure you want to delete?',
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonText: 'Yes,Delete it',
+    // cancelButtonText: 'Cancel',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      //if Yes is pressed
+      const observable = this.bugService.deleteBug(id);
+      observable.subscribe((response) => this.bugArray.splice(index, 1));
+      Swal.fire('Deleted', 'Bug deleted successfully!', 'success');
+    } else if (result.isDenied) {
+      //if No is pressed
+      Swal.fire('Cancelled', 'Deletion cancelled', 'error');
+    }
+  });
 }
-clear(){
-  console.log("clear");
- window.location.reload();
 
-}
   ngOnInit(): void {
   }
 }
